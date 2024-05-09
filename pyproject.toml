@@ -1,0 +1,18 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "python-poetry"
+version = "0.2.0"
+description = ""
+authors = [
+    "Bob van der Linden <bobvanderlinden@gmail.com>",
+    "Matthias Thym <git@thym.at>"
+]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+build123d = "^0.5.0"
+yacv-server = "^0.8.9"
