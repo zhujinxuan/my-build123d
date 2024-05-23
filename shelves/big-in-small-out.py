@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from build123d import *
-from build123d import export_stl
 from yacv_server import show, export_all
 
 length, thickness = 160, 40
