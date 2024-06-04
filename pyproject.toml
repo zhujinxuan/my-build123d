@@ -18,3 +18,4 @@ build123d = "^0.5.0"
 yacv-server = "^0.8.9"
 bd-warehouse = {git = "git@github.com:gumyr/bd_warehouse.git"}
 black = "^24.4.2"
+partcad-cli = "^0.5.22"
