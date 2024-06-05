@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from build123d import *
 
 # from yacv_server import show
@@ -49,5 +47,3 @@ def mkCover():
 
 cover = mkCover()
 base = mkBase()
-export_stl(cover, "cover.stl")
-export_stl(base, "base.stl")

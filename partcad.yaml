@@ -1,0 +1,9 @@
+desc: Partcad for my build123 files
+partcad: ">=0.5.22"
+pythonRequirements:
+  - ocp_vscode
+
+parts:
+  partcad-builds/partcad_biso:
+    type: build123d
+    desc: Mortise demo

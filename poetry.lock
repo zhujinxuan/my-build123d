@@ -3394,4 +3394,4 @@ pygltflib = ">=1.16.2,<2.0.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "15d10d9fe2105138aab381b857475eff461f2518c30385e6c73b9879c920f6eb"
+content-hash = "85db819293387308209f1520b108d044355cd06f551c392020599fa74a7f32fe"

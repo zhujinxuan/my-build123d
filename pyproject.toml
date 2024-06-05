@@ -10,7 +10,7 @@ authors = [
     "Jinxuan Zhu <zhujinxuan@gmail.com>"
 ]
 readme = "README.md"
-package-mode=false
+packages = [ {include="frame", from="src"} ]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -19,3 +19,4 @@ yacv-server = "^0.8.9"
 bd-warehouse = {git = "git@github.com:gumyr/bd_warehouse.git"}
 black = "^24.4.2"
 partcad-cli = "^0.5.22"
+ocp-vscode = "^2.3.3"

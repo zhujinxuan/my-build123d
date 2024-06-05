@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# Build mortise for big-in-small-out
 from typing import Iterable, List, Tuple, Union
 import build123d as b3d
 from dataclasses import dataclass
@@ -22,7 +22,7 @@ def mkFace(points: List[b3d.VectorLike]) -> b3d.Sketch:
 
 def mkTriClap(
     config: BuildConfig,
-):
+) -> b3d.Part:
     grid = config.gridUnit / 4
     pointsInt: List[Tuple[float, float]] = [(0.5, -0.5), (-1.0, -2.0), (2.0, -2.0)]
     points = [tuple(y * grid for y in x) for x in pointsInt]
@@ -30,7 +30,7 @@ def mkTriClap(
     return b3d.Plane.XY.offset(grid) * b3d.extrude(face, amount=grid)
 
 
-def mkMidMort(config: BuildConfig):
+def mkMidMort(config: BuildConfig) -> b3d.Part:
     grid = config.gridUnit / 4
     pointsInt: List[Tuple[float, float]] = [
         (-2, -2),
@@ -47,6 +47,24 @@ def mkMidMort(config: BuildConfig):
     return b3d.extrude(mkFace(points), amount=-grid)
 
 
-config = BuildConfig()
-mortise = mkTriClap(config) + mkMidMort(config)
-show(mortise)
+# Make the mortise proto without rotating and mirroring
+def mkMortiseProto(config: BuildConfig) -> b3d.Part:
+    grid = config.gridUnit / 4
+    tolerence = config.tolerence
+    triClap = mkTriClap(config)
+    midMort = mkMidMort(config)
+    if tolerence > 0:
+        face = b3d.Plane.XY.offset(grid + tolerence * 0.75)
+        face = face.rotated(rotation=(tolerence / config.gridUnit * 0.5, 0, 0))
+        triClap = triClap.split(plane=face)
+    if tolerence > 0:
+        faceTop = b3d.Plane.XY.offset(-tolerence * 0.75).rotated(
+            rotation=(-tolerence / config.gridUnit * 0.5, 0, 0)
+        )
+        midMort = midMort.split(faceTop, keep=b3d.Keep.BOTTOM)
+        faceBottom = b3d.Plane.XY.offset(tolerence * 0.75 - grid).rotated(
+            rotation=(tolerence / config.gridUnit * 0.5, 0, 0)
+        )
+        midMort = midMort.split(faceBottom)
+    mortise = triClap + mkMidMort(config)
+    return mortise
