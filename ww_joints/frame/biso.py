@@ -3,6 +3,7 @@ from typing import Iterable, List, Tuple, Union
 import build123d as b3d
 from dataclasses import dataclass
 from yacv_server import show
+from math import arcsin
 
 
 @dataclass
@@ -54,16 +55,18 @@ def mkMortiseProto(config: BuildConfig) -> b3d.Part:
     triClap = mkTriClap(config)
     midMort = mkMidMort(config)
     if tolerence > 0:
+        degree = arcsin(tolerence / config.gridUnit * 0.5)
         face = b3d.Plane.XY.offset(grid + tolerence * 0.75)
-        face = face.rotated(rotation=(tolerence / config.gridUnit * 0.5, 0, 0))
+        face = face.rotated(rotation=(degree, 0, 0))
         triClap = triClap.split(plane=face)
     if tolerence > 0:
+        degree = arcsin(tolerence / config.gridUnit * 0.5)
         faceTop = b3d.Plane.XY.offset(-tolerence * 0.75).rotated(
-            rotation=(-tolerence / config.gridUnit * 0.5, 0, 0)
+            rotation=(-degree, 0, 0)
         )
         midMort = midMort.split(faceTop, keep=b3d.Keep.BOTTOM)
         faceBottom = b3d.Plane.XY.offset(tolerence * 0.75 - grid).rotated(
-            rotation=(tolerence / config.gridUnit * 0.5, 0, 0)
+            rotation=(degree, 0, 0)
         )
         midMort = midMort.split(faceBottom)
     mortise = triClap + mkMidMort(config)

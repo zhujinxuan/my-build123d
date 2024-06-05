@@ -1,8 +1,8 @@
-from frame.biso import mkMortiseProto, BuildConfig
+from ww_joints.frame.biso import mkMortiseProto, BuildConfig
 import build123d as b3d
-from ocp_vscode import show_object
+from yacv_server import show
 
 config = BuildConfig(tolerence=5)
 mortise = mkMortiseProto(config)
 
-show_object(mortise)
+show(mortise)

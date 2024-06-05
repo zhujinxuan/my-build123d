@@ -3,14 +3,13 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "my-build123d"
+name = "ww_joints"
 version = "0.2.0"
 description = ""
 authors = [
     "Jinxuan Zhu <zhujinxuan@gmail.com>"
 ]
 readme = "README.md"
-packages = [ {include="frame", from="src"} ]
 
 [tool.poetry.dependencies]
 python = "^3.11"
