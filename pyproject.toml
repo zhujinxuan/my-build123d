@@ -3,7 +3,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "ww_joints"
+name = "mortised_frame"
 version = "0.2.0"
 description = ""
 authors = [
@@ -19,3 +19,4 @@ bd-warehouse = {git = "git@github.com:gumyr/bd_warehouse.git"}
 black = "^24.4.2"
 partcad-cli = "^0.5.22"
 ocp-vscode = "^2.3.3"
+

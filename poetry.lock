@@ -76,7 +76,7 @@ test = ["astroid (>=1,<2)", "astroid (>=2,<4)", "pytest"]
 
 [[package]]
 name = "bd_warehouse"
-version = "0.1.dev85+g4974217"
+version = "0.1.dev87+gd2dad1d"
 description = "A python CAD programming library"
 optional = false
 python-versions = ">=3.9"
